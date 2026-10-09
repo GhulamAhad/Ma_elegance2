@@ -1,0 +1,7 @@
+const products = [
+  { id: 1, name: "Royal Oud Perfume", slug: "royal-oud-perfume", brand: "MA ELEGANCE", category: "Perfume", description: "A warm, luxurious oud fragrance designed for confident evenings and unforgettable occasions.", price: 4999, oldPrice: 5999, discount: 17, rating: 5, reviews: 128, stock: 20, badge: "Best Seller", isNew: false, image: "/products/perfume1.jpg" },
+  { id: 2, name: "Signature Perfume", slug: "signature-perfume", brand: "MA ELEGANCE", category: "Perfume", description: "A refined everyday fragrance with a sophisticated long-lasting character.", price: 3999, oldPrice: 4999, discount: 20, rating: 5, reviews: 110, stock: 30, badge: "New", isNew: true, image: "/products/perfume2.jpg" },
+  { id: 3, name: "Golden Bloom Necklace", slug: "golden-bloom-necklace", brand: "MA ELEGANCE", category: "Jewelry", description: "A delicate statement necklace made to add a polished touch to any look.", price: 3499, oldPrice: 4299, discount: 19, rating: 4.8, reviews: 74, stock: 12, badge: "New", isNew: true, image: "/products/jewelry1.jpg" },
+  { id: 4, name: "Pearl Elegance Set", slug: "pearl-elegance-set", brand: "MA ELEGANCE", category: "Jewelry", description: "An elegant pearl-inspired set for graceful everyday styling and special occasions.", price: 4499, oldPrice: 5499, discount: 18, rating: 5, reviews: 89, stock: 9, badge: "Best Seller", isNew: false, image: "/products/jewelry2.jpg" },
+];
+export default products;

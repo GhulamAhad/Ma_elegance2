@@ -1,0 +1,33 @@
+
+# Frontend dependencies and build output
+node_modules/
+dist/
+build/
+
+# Environment secrets
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+backend/.env
+
+# Python virtual environments and cache
+.venv/
+venv/
+backend/.venv/
+backend/venv/
+__pycache__/
+**/__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Local database and logs
+*.db
+*.log
+
+# Editors and operating system
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
