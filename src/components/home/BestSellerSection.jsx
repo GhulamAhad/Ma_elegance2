@@ -3,7 +3,7 @@ import ProductCard from "./ProductCard";
 import { useCatalog } from "../../context/CatalogContext";
 
 function BestSellerSection() {
-  const {products}=useCatalog();
+  const { products } = useCatalog();
   return (
     <section className="py-28 bg-[#FAF8F4]">
 
@@ -30,12 +30,10 @@ function BestSellerSection() {
 
         <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-8">
 
-          {products.map((product) => (
-            <ProductCard
-              key={product.id}
-              product={product}
-            />
-          ))}
+          {Array.isArray(products) &&
+            products.map((product) => (
+              <ProductCard key={product.id} product={product} />
+            ))}
 
         </div>
 
