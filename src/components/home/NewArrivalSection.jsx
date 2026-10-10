@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 
 import Container from "../common/Container";
@@ -6,16 +7,21 @@ import FilterButtons from "./FilterButtons";
 import { useCatalog } from "../../context/CatalogContext";
 
 function NewArrivalSection() {
-  const {products}=useCatalog();
-  const newArrivals=products.filter(p=>p.isNew);
+  const { products } = useCatalog();
   const [active, setActive] = useState("All");
+
+  // Prevent crashes if the catalog value isn't an array.
+  const safeProducts = Array.isArray(products) ? products : [];
+
+  const newArrivals = safeProducts.filter((p) => p.isNew);
 
   const filteredProducts =
     active === "All"
       ? newArrivals
-      : newArrivals.filter(
-          (item) => item.category === active
-        );
+      : newArrivals.filter((item) => item.category === active);
+
+  // Keep your existing return (...) JSX below this line.
+
 
   return (
     <section className="py-24 bg-white">
@@ -30,7 +36,7 @@ function NewArrivalSection() {
 
           <h2
             className="mt-4 text-5xl font-semibold"
-            style={{ fontFamily: "'Playfair Display', serif" }}
+            style={{ fontFamily: "Playfair Display", fontStyle: "serif" }}
           >
             Discover Our Latest Collection
           </h2>
