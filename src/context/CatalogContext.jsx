@@ -14,11 +14,40 @@ export function CatalogProvider({ children }) {
   const [loading, setLoading] = useState(true);
   const [apiError, setApiError] = useState("");
 
+
   const loadCatalog = async () => {
-    try { const data = await api.products(); setProducts(data); setApiError(""); }
-    catch (e) { setApiError(e.message); }
-    finally { setLoading(false); }
+    try {
+      const data = await api.products();
+
+      // Support common API response formats.
+      let catalog = null;
+
+      if (Array.isArray(data)) {
+        catalog = data;
+      } else if (Array.isArray(data?.products)) {
+        catalog = data.products;
+      } else if (Array.isArray(data?.items)) {
+        catalog = data.items;
+      } else if (Array.isArray(data?.data)) {
+        catalog = data.data;
+      }
+
+      if (!catalog) {
+        console.error("Unexpected products API response:", data);
+        setApiError("The server returned an unexpected products format.");
+        return;
+      }
+
+      setProducts(catalog);
+      setApiError("");
+    } catch (error) {
+      console.error("Failed to load catalog:", error);
+      setApiError(error.message || "Failed to load products.");
+    } finally {
+      setLoading(false);
+    }
   };
+
   useEffect(() => { loadCatalog(); }, []);
   useEffect(() => { if (admin) { localStorage.setItem(ADMIN_KEY, JSON.stringify(admin)); api.orders().then(setOrders).catch(() => { }); } else localStorage.removeItem(ADMIN_KEY); }, [admin]);
 
